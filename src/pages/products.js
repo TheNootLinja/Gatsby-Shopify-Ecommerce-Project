@@ -1,19 +1,21 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import './products.css';
+import ProductCard from '../components/ProductCard/ProductCard'
+import { wrapper } from './products.module.css'
 
-const products = (data) => {
-  const shopifyData = data.data.allShopifyProduct.edges;
-  console.log(shopifyData);
-  return <div>
-      {shopifyData.map(product => {
-        return <div  key={product.node.id} className="product-card">
-                <p>{product.node.title}</p>
-                <img src={product.node.images.src} alt="" />
-            </div>
-      })}
-  </div>;
+const products = ({data}) => {
+    const shopifyData = data.allShopifyProduct.edges;
+    console.log(shopifyData)
+  return(
+    <div className={wrapper}>
+    {
+      shopifyData?.map((product, index) => <ProductCard  product={product} key={index}/>)
+    }
+  </div>
+  )
 };
+
+export default products;
 
 export const query = graphql`
   query {
@@ -40,5 +42,3 @@ export const query = graphql`
     }
   }
 `;
-
-export default products;
