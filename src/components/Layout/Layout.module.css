@@ -1,2 +1,39 @@
-.content-wrapper {
+.site-title {
+  width: fit-content;
+  font-size: 35px;
+  color: #f5a200;
+}
+
+.wrapper {
+  margin: 0;
+  padding: 0;
+}
+
+.nav-bar {
+  background: #b3694a;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.nav-links {
+  height: 100%;
+  display: flex;
+  list-style: none;
+  align-items: center;
+}
+
+.link-item {
+  margin-right: 20px;
+}
+
+.link-item:last-of-type {
+  margin-right: 0px;
+}
+
+.link-item a {
+  text-decoration: none;
+  color: #f5a200;
+  font-size: 23px;
 }
