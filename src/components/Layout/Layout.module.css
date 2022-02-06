@@ -1,7 +1,7 @@
 .site-title {
   width: fit-content;
   font-size: 35px;
-  color: #f5a200;
+  color: #000;
 }
 
 .wrapper {
@@ -10,7 +10,7 @@
 }
 
 .nav-bar {
-  background: #b3694a;
+  /* background: #b3694a; */
   height: 45px;
   display: flex;
   align-items: center;
@@ -34,6 +34,6 @@
 
 .link-item a {
   text-decoration: none;
-  color: #f5a200;
+  color: #000;
   font-size: 23px;
 }

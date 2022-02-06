@@ -1,10 +1,13 @@
 import React from 'react';
-import Layout from '../components/Layout/Layout'
+import {homePage, homePageBackground} from './index.module.css'
+import Layout from '../components/Layout/Layout';
+import PastasImg from '../images/pastas.jpg'
 
 const IndexPage = () => {
   return(
     <Layout>
-      <div>
+      <img src={PastasImg} className={homePageBackground} />
+      <div className={homePage}>
         <p>Still Here!</p>
       </div>
     </Layout>
