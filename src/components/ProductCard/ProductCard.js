@@ -3,7 +3,7 @@ import { Link } from 'gatsby';
 import {  addButton, wrapper, textWrapper, image, title, price } from './ProductCard.module.css';
 
 const ProductCard = ({ product }) => {
-  const productLink = "/" + product.node.handle;
+  const productLink = "/products/" + product.node.handle;
   return(
     <div className={wrapper}>
         <div className={addButton} onClick={() => alert('ADDED TO CART!')}><p>+</p></div>
