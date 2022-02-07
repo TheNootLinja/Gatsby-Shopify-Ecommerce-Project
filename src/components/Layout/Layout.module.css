@@ -35,5 +35,8 @@
 .link-item a {
   text-decoration: none;
   color: #000;
-  font-size: 23px;
+  font-size: 1.25rem;
+  margin-right: 20px;
 }
+
+/* .link-item; */
