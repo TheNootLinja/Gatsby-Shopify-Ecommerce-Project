@@ -1,0 +1,32 @@
+.main-content-container {
+  width: 800px;
+  margin: 25vh auto;
+}
+
+.send-noods {
+  text-align: center;
+  font-size: 60px;
+  margin-bottom: 0;
+}
+
+.send-noods-under {
+  margin-top: 5px;
+  margin-bottom: 92px;
+  text-align: center;
+  font-size: 31px;
+}
+
+.main-text {
+  font-size: 25px;
+}
+
+.home-page-background {
+  filter: blur(2px);
+  opacity: 30%;
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+}
