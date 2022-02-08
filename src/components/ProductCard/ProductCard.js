@@ -6,7 +6,12 @@ const ProductCard = ({ product }) => {
   const productLink = "/products/" + product.node.handle;
   return(
     <div className={wrapper}>
-        <div className={addButton} onClick={() => alert('ADDED TO CART!')}><p>+</p></div>
+        <button 
+        className={`${addButton}`}
+        onClick={() => alert('Added to Cart!')}
+        >
+          +
+        </button>
         <Link to={productLink}>
             <img src={product.node.images[0].src} alt="" className={image} />
             <div className={textWrapper}>
