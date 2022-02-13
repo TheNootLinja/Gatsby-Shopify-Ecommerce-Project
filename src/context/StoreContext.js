@@ -1,8 +1,8 @@
-import { createContext, useState, useEffect } from 'react';
+import React, { createContext, useState, useEffect, useContext } from 'react';
 import fetch from 'isomorphic-fetch';
 import Client from 'shopify-buy';
 
-const cleint = Client.buildClient({
+const client = Client.buildClient({
   domain: process.env.GATSBY_SHOPIFY_STORE_URL,
   storefrontAccessToken: process.env.GATSBY_STOREFRONT_ACCESS_TOKEN
 }, fetch)
@@ -55,7 +55,7 @@ export const StoreProvider = ({ children }) => {
 
       if(existingCheckoutID && existingCheckoutID !== 'null') {
         try {
-          const existingCheckout = await cleint.checkout.fetch(
+          const existingCheckout = await client.checkout.fetch(
             existingCheckoutID
           )
           if(!existingCheckoutID.completedAt) {
