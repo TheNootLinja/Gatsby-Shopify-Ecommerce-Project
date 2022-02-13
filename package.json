@@ -21,6 +21,7 @@
     "isomorphic-fetch": "^3.0.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "shopify-buy": "^2.14.0"
+    "shopify-buy": "^2.14.0",
+    "styled-components": "^5.3.3"
   }
 }
