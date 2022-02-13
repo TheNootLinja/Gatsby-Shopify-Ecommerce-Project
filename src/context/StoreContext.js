@@ -194,4 +194,30 @@ export const StoreProvider = ({ children }) => {
     }
   }
 
+  return (
+    <StoreContext.Provider
+    value={{
+      ...defaultValues,
+      addVariantToCart,
+      removeLineItem,
+      cart,
+      checkout,
+      loading
+    }}
+    >
+      {children}
+    </StoreContext.Provider>
+  )
+
 }
+
+const useStore = () => {
+  const context = useContext(StoreContext)
+
+  if(context === undefined){
+    throw new Error('useStore must be used within StoreContext Provider')
+  }
+  return context;
+}
+
+export default useStore;
