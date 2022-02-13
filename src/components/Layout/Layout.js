@@ -20,6 +20,11 @@ const Layout = ({ children }) => {
               </Link>
             </li>
             <li className={linkItem}>
+              <Link to="/cart">
+                Cart of Noods
+              </Link>
+            </li>
+            <li className={linkItem}>
               <Link to="/about">
                 About Noods
               </Link>

@@ -3,8 +3,10 @@ import styled from 'styled-components';
 
 import Layout from '../components/Layout/Layout';
 import ProductRow from '../components/ProductRow';
+import useStore from '../context/StoreContext';
 
 const Cart = () => {
+  const { cart } = useStore();
   return (
     <Layout>
       <Wrapper>
@@ -13,6 +15,9 @@ const Cart = () => {
           <Text>Quanity</Text>
           <Text>Remove Item</Text>
         </HeaderWrapper>
+        {
+          cart.length > 0 ? cart.map((item, index) => <ProductRow key={index} item={item} />) : <Text>No Noods!</Text>
+        }
         {/* Cart contents go here later */}
         <ButtonWrapper>
           <button onClick={() => console.log('Redirect to checkout page')}>Checkout</button>

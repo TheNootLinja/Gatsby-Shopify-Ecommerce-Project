@@ -139,6 +139,7 @@ export const StoreProvider = ({ children }) => {
       }
       // Use the setCart function with the updatedCart variable as an argument to update the cart state
       setCart(updatedCart);
+      console.log(cart);
       // Set loading state to false
       setLoading(false);
       // Throw up an alert to let user know item has been added to the cart
