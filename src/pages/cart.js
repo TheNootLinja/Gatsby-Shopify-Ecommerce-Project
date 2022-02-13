@@ -6,7 +6,19 @@ import ProductRow from '../components/ProductRow';
 
 const Cart = () => {
   return (
-    <div>Cart</div>
+    <Layout>
+      <Wrapper>
+        <HeaderWrapper>
+          <Text>Product</Text>
+          <Text>Quanity</Text>
+          <Text>Remove Item</Text>
+        </HeaderWrapper>
+        {/* Cart contents go here later */}
+        <ButtonWrapper>
+          <button onClick={() => console.log('Redirect to checkout page')}>Checkout</button>
+        </ButtonWrapper>
+      </Wrapper>
+    </Layout>
   )
 }
 
