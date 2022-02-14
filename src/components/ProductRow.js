@@ -1,8 +1,10 @@
-import React from 'react'
+import React from 'react';
 import styled from 'styled-components';
+import useStore from '../context/StoreContext';
 
 const ProductRow = ({ item }) => {
   const { product, quantity } = item;
+  const { removeLineItem } = useStore();
 
   return (
     <Wrapper>
@@ -11,7 +13,7 @@ const ProductRow = ({ item }) => {
         <Subtitle>{product.title}</Subtitle>
       </ProductWrapper>
       <Subtitle>{quantity}</Subtitle>
-      <DeleteButton onClick={() => console.log("Remove item")}>Remove</DeleteButton>
+      <DeleteButton onClick={() => removeLineItem(product.variants[0].shopifyId)}>Remove</DeleteButton>
     </Wrapper>
   )
 }

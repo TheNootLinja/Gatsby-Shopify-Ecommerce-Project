@@ -96,7 +96,6 @@ export const StoreProvider = ({ children }) => {
     // if(!variantId) {
     //   variantId = product;
     // }
-    console.log("VariantId: " + variantId)
     // Storing value of parseInt function with quantity and base 10 as arguments passed
     const parsedQuantity = parseInt(quantity, 10);
     // Add object for item to lineItemsToUpdate array
@@ -171,7 +170,13 @@ export const StoreProvider = ({ children }) => {
       let lineItemID = '';
       // Going through each item in the checkout looking for the item the user
       // wants to remove
+      // console.log("====================")
+      // console.log(checkout.lineItems)
+      // console.log("====================")
       checkout.lineItems?.forEach((item) => {
+        // console.log("Item id: " + item.variableValues.lineItems[0].variantId)
+        console.log(item.variableValues)
+        console.log("Variant id: " + variantId)
         // If the item is found set lineItemID to the items id
         if(item.variableValues.lineItems[0]?.variantId === variantId) {
           lineItemID = item.id
