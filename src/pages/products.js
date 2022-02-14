@@ -6,7 +6,6 @@ import { wrapper } from './products.module.css';
 
 const products = ({data}) => {
     const shopifyData = data.allShopifyProduct.edges;
-    console.log(shopifyData)
   return(
     <Layout>
         <div className={wrapper}>

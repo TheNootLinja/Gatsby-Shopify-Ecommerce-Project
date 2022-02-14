@@ -10,7 +10,7 @@ const ProductCard = ({ product }) => {
     <div className={wrapper}>
         <button 
         className={`${addButton}`}
-        onClick={() => addVariantToCart(product, 1)}
+        onClick={() => addVariantToCart(product.node, 1)}
         >
           +
         </button>

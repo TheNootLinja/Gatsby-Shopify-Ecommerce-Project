@@ -53,12 +53,12 @@ export const StoreProvider = ({ children }) => {
         // If not then set to null
         : null
 
-      if(existingCheckoutID && existingCheckoutID !== 'null') {
+      if(existingCheckoutID && existingCheckoutID !== `null`) {
         try {
           const existingCheckout = await client.checkout.fetch(
             existingCheckoutID
           )
-          if(!existingCheckoutID.completedAt) {
+          if(!existingCheckout.completedAt) {
             setCheckoutItem(existingCheckout)
             return
           }
@@ -89,7 +89,14 @@ export const StoreProvider = ({ children }) => {
     // Store value in a variable
     const checkoutID = checkout.id;
     // Storing varaints shopify id in a variable
-    const variantId = product.variants[0]?.shopifyId;
+    let variantId = product?.variants[0]?.shopifyId;
+    // if(!variantId) {
+    //   variantId = product.variants[0].shopifyId;
+    // }
+    // if(!variantId) {
+    //   variantId = product;
+    // }
+    console.log("VariantId: " + variantId)
     // Storing value of parseInt function with quantity and base 10 as arguments passed
     const parsedQuantity = parseInt(quantity, 10);
     // Add object for item to lineItemsToUpdate array
@@ -110,6 +117,7 @@ export const StoreProvider = ({ children }) => {
       let updatedCart = [];
       // Checking if there are any items in the cart
       if(cart.length > 0) {
+        console.log(cart)
         // If there is, check if the item we are trying to add is already in the array
         const itemIsInCart = cart.find((item) => item.product.variants[0]?.shopifyId === variantId);
         // Check if item was found to already be in the array
@@ -143,7 +151,6 @@ export const StoreProvider = ({ children }) => {
       // Set loading state to false
       setLoading(false);
       // Throw up an alert to let user know item has been added to the cart
-      alert('Item added to cart!');
       // If there is an error
     } catch(error) {
       // Set loading state to false

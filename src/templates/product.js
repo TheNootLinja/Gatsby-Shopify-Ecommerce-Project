@@ -14,11 +14,11 @@ const ProductTemplate = ({ pageContext }) => {
   return (
   <Layout>
     <h1>{product.title}</h1>
-    <img className={productImg} src={product.images[0]?.originalSrc} alt="" />
+    <img className={productImg} src={product.images[0]?.src} alt="" />
     <div>{product.description}</div>
     <label htmlFor="qty">Quantity: </label>
-    <input placeholder="1" id="qty" type="number" defaultValue={1} {...bind} />
-    <button onClick={() => alert("Added to Cart!")}>Add to Cart</button>
+    <input placeholder="1" id="qty" type="number" {...bind} />
+    <button onClick={() => addVariantToCart(product, bind.value)}>Add to Cart</button>
   </Layout>
   )
 };
