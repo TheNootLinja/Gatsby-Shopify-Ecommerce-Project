@@ -20,11 +20,16 @@ const defaultValues = {
     webUrl: ''
   }
 }
+/*
+ TODO: Something with the way things are currently written is breaking
+ TODO: the checkout lineItems so we may end up doing a rewrite of each
+ TODO: piece of functionality piece by piece to see if it fixes it.
+*/
 
 
 const StoreContext = createContext(defaultValues);
 
-const isBrowser = typeof window != 'undefined';
+const isBrowser = typeof window !== 'undefined';
 const localStorageKey = 'shopify_checkout_id';
 
 export const StoreProvider = ({ children }) => {
@@ -33,6 +38,8 @@ export const StoreProvider = ({ children }) => {
   const [ checkout, setCheckout ] = useState(defaultValues.checkout);
   const [ loading, setLoading ] = useState(defaultValues.loading);
 
+  // TODO: Look through the setCheckoutItem function to see if this could
+  // TODO  be where our checkout bug is coming from.
   // Passing in checkout state
   const setCheckoutItem = (checkout) => {
     // If isBrowser is true, set item in local storage with
@@ -52,14 +59,14 @@ export const StoreProvider = ({ children }) => {
         ? localStorage.getItem(localStorageKey)
         // If not then set to null
         : null
-
+      
       if(existingCheckoutID && existingCheckoutID !== `null`) {
         try {
           const existingCheckout = await client.checkout.fetch(
             existingCheckoutID
           )
           if(!existingCheckout.completedAt) {
-            setCheckoutItem(existingCheckout)
+            setCheckoutItem(existingCheckout);
             return
           }
         } catch (e) {
@@ -75,6 +82,7 @@ export const StoreProvider = ({ children }) => {
 
   }, [])
 
+  // *! The bug is either coming from here or the remove function
   // Defining function for adding item to cart and passing in product and quantity
   const addVariantToCart = async (product, quantity) => {
     // Setting loading to true
@@ -90,12 +98,6 @@ export const StoreProvider = ({ children }) => {
     const checkoutID = checkout.id;
     // Storing varaints shopify id in a variable
     let variantId = product?.variants[0]?.shopifyId;
-    // if(!variantId) {
-    //   variantId = product.variants[0].shopifyId;
-    // }
-    // if(!variantId) {
-    //   variantId = product;
-    // }
     // Storing value of parseInt function with quantity and base 10 as arguments passed
     const parsedQuantity = parseInt(quantity, 10);
     // Add object for item to lineItemsToUpdate array
@@ -105,18 +107,16 @@ export const StoreProvider = ({ children }) => {
         quantity: parsedQuantity,
       },
     ]
-
     // Start a try block
     try {
       // Using the addLineItems shopify function with checkoutID and lineItemsToUpdate as arguments
-      const res = await client.checkout.addLineItems(checkoutID, lineItemsToUpdate);
+      const res = await client.checkout.addLineItems(checkoutID, lineItemsToUpdate)
       // Setting the checkout to the response from addLineItems function
       setCheckout(res);
       // Initializing empty array for updatedCart variable
       let updatedCart = [];
       // Checking if there are any items in the cart
       if(cart.length > 0) {
-        console.log(cart)
         // If there is, check if the item we are trying to add is already in the array
         const itemIsInCart = cart.find((item) => item.product.variants[0]?.shopifyId === variantId);
         // Check if item was found to already be in the array
@@ -146,7 +146,6 @@ export const StoreProvider = ({ children }) => {
       }
       // Use the setCart function with the updatedCart variable as an argument to update the cart state
       setCart(updatedCart);
-      console.log(cart);
       // Set loading state to false
       setLoading(false);
       // Throw up an alert to let user know item has been added to the cart
@@ -157,45 +156,77 @@ export const StoreProvider = ({ children }) => {
       // Log the error to the console with the error object
       console.error(`Error in addVariantToCart: ${error}`)
     }
-
+    console.log(cart);
+    console.log(checkout);
   };
 
+  // const addVariantToCart = async (product, quantity) => {
+  //   setLoading(true)
+  
+  //   if (checkout.id === "") {
+  //     console.error("No checkout ID assigned.")
+  //     return
+  //   }
+  
+  //   const checkoutID = checkout.id
+  //   const variantId = product.variants[0]?.shopifyId
+  //   const parsedQuantity = parseInt(quantity, 10)
+  
+  //   const lineItemsToUpdate = [
+  //     {
+  //       variantId,
+  //       quantity: parsedQuantity,
+  //     },
+  //   ]
+  
+  //   try {
+  //     const res = await client.checkout.addLineItems(checkoutID, lineItemsToUpdate)
+  //     setCheckout(res)
+  
+  //     let updatedCart = []
+  //     if (cart.length > 0) {
+  //       const itemIsInCart = cart.find((item) => item.product.variants[0]?.shopifyId === variantId)
+  
+  //       if (itemIsInCart) {
+  //         const newProduct = {
+  //           product: { ...itemIsInCart.product },
+  //           quantity: (itemIsInCart.quantity + parsedQuantity)
+  //         }
+  //         const otherItems = cart.filter((item) => item.product.variants[0]?.shopifyId !== variantId)
+  //         updatedCart = [...otherItems, newProduct]
+  //       } else {
+  //         updatedCart = cart.concat([{ product, quantity: parsedQuantity }])
+  //       }
+  //     } else {
+  //       updatedCart = [{ product, quantity: parsedQuantity }]
+  //     }
+  //     setCart(updatedCart)
+  
+  //     setLoading(false)
+  //     alert("Item added to cart!")
+  //   } catch (error) {
+  //     setLoading(false)
+  //     console.error(`Error in addVariantToCart: ${error}`)
+  //   }
+  // }
+
+  // When running the remove function with the logs currently in the code, it prints 3 line items when
+  // there are only 2 items in the cart, and all 3 have the same shopify id inside of the variant
+
+  // Upon further inspection, when an item is added to the cart, all other items in the cart suddenly
+  // have there id's changed to the newly added items shopifyid
+
   // Defining function for removing item from cart and passing in the variantId as argument
-  const removeLineItem = async (variantId) => {
+  const removeLineItem = async (checkoutID, lineItemID) => {
     // Set loading state to false
     setLoading(true);
     // Enter try block
     try {
-      // Initializing lineItemID variable as empty string
-      let lineItemID = '';
-      // Going through each item in the checkout looking for the item the user
-      // wants to remove
-      // console.log("====================")
-      // console.log(checkout.lineItems)
-      // console.log("====================")
-      checkout.lineItems?.forEach((item) => {
-        // console.log("Item id: " + item.variableValues.lineItems[0].variantId)
-        console.log(item.variableValues)
-        console.log("Variant id: " + variantId)
-        // If the item is found set lineItemID to the items id
-        if(item.variableValues.lineItems[0]?.variantId === variantId) {
-          lineItemID = item.id
-        };
-      });
-      // If the item is not found log message indicating this to the console and return
-      if(!lineItemID) {
-        console.log('Product not in cart')
-        return
-      };
       // Use the removeLineItems shopify function with checkout id and an array with
       // the id of the line item to remove
       const res = await client.checkout.removeLineItems(checkout.id, [lineItemID])
       // Setting the checkout state to the response from shopify function
       setCheckout(res)
-      // Setting updatedCart variable to contents of cart with desired item removed
-      const updatedCart = cart.filter((item) => item.product.variants[0]?.shopifyId !== variantId)
-      // Setting cart state to the updateCart variable
-      setCart(updatedCart)
       // Set loading state to false
       setLoading(false)
       // Catching if there is an error

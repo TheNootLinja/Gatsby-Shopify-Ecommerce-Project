@@ -6,7 +6,9 @@ import ProductRow from '../components/ProductRow';
 import useStore from '../context/StoreContext';
 
 const Cart = () => {
-  const { cart } = useStore();
+  const { cart, checkout } = useStore();
+  console.log(cart);
+  console.log(checkout);
   return (
     <Layout>
       <Wrapper>
@@ -16,11 +18,11 @@ const Cart = () => {
           <Text>Remove Item</Text>
         </HeaderWrapper>
         {
-          cart.length > 0 ? cart.map((item, index) => <ProductRow key={index} item={item} />) : <Text>No Noods!</Text>
+          checkout.lineItems.length > 0 ? checkout.lineItems.map((item, index) => <ProductRow key={index} item={item} />) : <Text>No Noods!</Text>
         }
         {/* Cart contents go here later */}
         <ButtonWrapper>
-          <button onClick={() => console.log('Redirect to checkout page')}>Checkout</button>
+          <button disabled={checkout.lineItems.length === 0} onClick={() => window.open(checkout.webUrl)}>Checkout</button>
         </ButtonWrapper>
       </Wrapper>
     </Layout>

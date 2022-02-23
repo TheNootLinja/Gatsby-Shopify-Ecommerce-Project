@@ -3,17 +3,18 @@ import styled from 'styled-components';
 import useStore from '../context/StoreContext';
 
 const ProductRow = ({ item }) => {
-  const { product, quantity } = item;
-  const { removeLineItem } = useStore();
-
+  // const { product, quantity } = item;
+  const { removeLineItem, checkout } = useStore();
+  console.log(item)
   return (
     <Wrapper>
       <ProductWrapper>
-        <Image src={product.images[0]?.src} alt={product.title} />
-        <Subtitle>{product.title}</Subtitle>
+        <Image src={item.variant.image.src} alt={item.title} />
+        <Subtitle>{item.title}</Subtitle>
+        {/* <p>{product.variants[0].shopifyId}</p> */}
       </ProductWrapper>
-      <Subtitle>{quantity}</Subtitle>
-      <DeleteButton onClick={() => removeLineItem(product.variants[0].shopifyId)}>Remove</DeleteButton>
+      <Subtitle>{item.quantity}</Subtitle>
+      <DeleteButton onClick={() => removeLineItem(checkout.id, item.id)}>Remove</DeleteButton>
     </Wrapper>
   )
 }
