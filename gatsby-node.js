@@ -4,29 +4,27 @@ exports.createPages = async ({ graphql, actions }) => {
   // Query for all products in Shopify
   const result = await graphql(`
     query {
-      allShopifyProduct(sort: { fields: [title] }) {
+      allShopifyProduct {
         edges {
           node {
             title
-            images {
-              originalSrc
-            }
-            shopifyId
             handle
-            description
+            variants{
+              shopifyId
+            }
             priceRangeV2 {
               maxVariantPrice {
                 amount
               }
-              minVariantPrice {
-                amount
-              }
             }
-            status
+          description
+          images {
+            src
           }
         }
       }
     }
+  }
   `)
   // Iterate over all products and create a new page using a template
   // The product "handle" is generated automatically by Shopify
