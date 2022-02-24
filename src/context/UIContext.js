@@ -6,11 +6,14 @@ const defaultValues = {
 
 const UIContext = createContext(defaultValues);
 
-export const UIContextProvider = ({ children }) => {
+export const UIProvider = ({ children }) => {
   const [ toastShow, setToastShow ] = useState(defaultValues.toastShow);
 
   const handleToastShow = () => {
     setToastShow(true);
+    setTimeout(function () {
+      setToastShow(false);
+    }, 3000);
   }
 
   return (
