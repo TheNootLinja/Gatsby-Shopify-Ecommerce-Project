@@ -11,7 +11,6 @@ const ProductRow = ({ item }) => {
       <ProductWrapper>
         <Image src={item.variant.image.src} alt={item.title} />
         <Subtitle>{item.title}</Subtitle>
-        {/* <p>{product.variants[0].shopifyId}</p> */}
       </ProductWrapper>
       <Subtitle>{item.quantity}</Subtitle>
       <DeleteButton onClick={() => removeLineItem(checkout.id, item.id)}>Remove</DeleteButton>

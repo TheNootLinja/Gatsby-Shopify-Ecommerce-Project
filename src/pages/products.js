@@ -1,18 +1,19 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import ProductCard from '../components/ProductCard/ProductCard';
-import Layout from '../components/Layout/Layout'
+import Layout from '../components/Layout/Layout';
 import { wrapper } from './products.module.css';
+import ToastAlert from '../components/ToastAlert';
 
 const products = ({data}) => {
     const shopifyData = data.allShopifyProduct.edges;
   return(
     <Layout>
-        <div className={wrapper}>
+      <div className={wrapper}>
         {
         shopifyData?.map((product, index) => <ProductCard  product={product} key={index}/>)
         }
-    </div>
+      </div>
   </Layout>
   )
 };

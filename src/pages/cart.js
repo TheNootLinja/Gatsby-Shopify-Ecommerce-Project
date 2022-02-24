@@ -20,7 +20,6 @@ const Cart = () => {
         {
           checkout.lineItems.length > 0 ? checkout.lineItems.map((item, index) => <ProductRow key={index} item={item} />) : <Text>No Noods!</Text>
         }
-        {/* Cart contents go here later */}
         <ButtonWrapper>
           <button disabled={checkout.lineItems.length === 0} onClick={() => window.open(checkout.webUrl)}>Checkout</button>
         </ButtonWrapper>
