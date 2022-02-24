@@ -20,12 +20,6 @@ const defaultValues = {
     webUrl: ''
   }
 }
-/*
- TODO: Something with the way things are currently written is breaking
- TODO: the checkout lineItems so we may end up doing a rewrite of each
- TODO: piece of functionality piece by piece to see if it fixes it.
-*/
-
 
 const StoreContext = createContext(defaultValues);
 
@@ -82,7 +76,6 @@ export const StoreProvider = ({ children }) => {
 
   }, [])
 
-  // *! The bug is either coming from here or the remove function
   // Defining function for adding item to cart and passing in product and quantity
   const addVariantToCart = async (product, quantity) => {
     // Setting loading to true
@@ -156,65 +149,7 @@ export const StoreProvider = ({ children }) => {
       // Log the error to the console with the error object
       console.error(`Error in addVariantToCart: ${error}`)
     }
-    console.log(cart);
-    console.log(checkout);
   };
-
-  // const addVariantToCart = async (product, quantity) => {
-  //   setLoading(true)
-  
-  //   if (checkout.id === "") {
-  //     console.error("No checkout ID assigned.")
-  //     return
-  //   }
-  
-  //   const checkoutID = checkout.id
-  //   const variantId = product.variants[0]?.shopifyId
-  //   const parsedQuantity = parseInt(quantity, 10)
-  
-  //   const lineItemsToUpdate = [
-  //     {
-  //       variantId,
-  //       quantity: parsedQuantity,
-  //     },
-  //   ]
-  
-  //   try {
-  //     const res = await client.checkout.addLineItems(checkoutID, lineItemsToUpdate)
-  //     setCheckout(res)
-  
-  //     let updatedCart = []
-  //     if (cart.length > 0) {
-  //       const itemIsInCart = cart.find((item) => item.product.variants[0]?.shopifyId === variantId)
-  
-  //       if (itemIsInCart) {
-  //         const newProduct = {
-  //           product: { ...itemIsInCart.product },
-  //           quantity: (itemIsInCart.quantity + parsedQuantity)
-  //         }
-  //         const otherItems = cart.filter((item) => item.product.variants[0]?.shopifyId !== variantId)
-  //         updatedCart = [...otherItems, newProduct]
-  //       } else {
-  //         updatedCart = cart.concat([{ product, quantity: parsedQuantity }])
-  //       }
-  //     } else {
-  //       updatedCart = [{ product, quantity: parsedQuantity }]
-  //     }
-  //     setCart(updatedCart)
-  
-  //     setLoading(false)
-  //     alert("Item added to cart!")
-  //   } catch (error) {
-  //     setLoading(false)
-  //     console.error(`Error in addVariantToCart: ${error}`)
-  //   }
-  // }
-
-  // When running the remove function with the logs currently in the code, it prints 3 line items when
-  // there are only 2 items in the cart, and all 3 have the same shopify id inside of the variant
-
-  // Upon further inspection, when an item is added to the cart, all other items in the cart suddenly
-  // have there id's changed to the newly added items shopifyid
 
   // Defining function for removing item from cart and passing in the variantId as argument
   const removeLineItem = async (checkoutID, lineItemID) => {
