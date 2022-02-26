@@ -1,41 +1,69 @@
 import React from 'react';
+import styled from 'styled-components';
 import { Link } from 'gatsby';
-import { siteTitle, wrapper, contentWrapper, linkItem, navLinks, navBar } from './Layout.module.css';
 import '../../global.css'
 
 const Layout = ({ children }) => {
   return (
-  <div className={wrapper}>
-      <nav className={navBar}>
-      <header className={siteTitle}>Send Noods</header>
-          <ul className={navLinks}>
-            <li className={linkItem}>
+  <Wrapper>
+      <NavBar>
+      <SiteTitle>Send Noods</SiteTitle>
+          <NavLinks>
+            <LinkItem>
               <Link to="/">
                 Noods Home
               </Link>
-            </li>
-            <li className={linkItem}>
+            </LinkItem>
+            <LinkItem>
               <Link to="/products">
                 The Noods
               </Link>
-            </li>
-            <li className={linkItem}>
+            </LinkItem>
+            <LinkItem>
               <Link to="/cart">
                 Cart of Noods
               </Link>
-            </li>
-            <li className={linkItem}>
+            </LinkItem>
+            <LinkItem>
               <Link to="/about">
                 About Noods
               </Link>
-            </li>
-          </ul>
-      </nav>
-      <div className={contentWrapper}>
+            </LinkItem>
+          </NavLinks>
+      </NavBar>
+      <div>
         {children}
       </div>
-  </div>
+  </Wrapper>
   )
 };
 
 export default Layout;
+
+const Wrapper = styled.div`
+  margin: 0;
+  padding: 0;
+`;
+
+const NavBar = styled.nav`
+  display: none;
+  width: 0;
+`;
+
+const SiteTitle = styled.header`
+  width: fit-content;
+  font-size: 35px;
+  color: #000;
+`;
+
+const NavLinks = styled.ul`
+  height: 100%;
+  display: flex;
+  list-style: none;
+  align-items: center;
+`;
+
+const LinkItem = styled.li`
+  margin-right: 20px;
+`;
+
