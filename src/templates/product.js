@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import Layout from '../components/Layout';
-import { productImg } from './product.module.css';
 import Button from '../components/Button';
 
 import useStore from '../context/StoreContext';
@@ -17,7 +16,7 @@ const ProductTemplate = ({ pageContext }) => {
   <Layout>
     <ProductContainer>
     <h1>{product.title}</h1>
-      <Image className={productImg} src={product.images[0]?.src} alt="" />
+      <Image src={product.images[0]?.src} alt="" />
       <div>{product.description}</div>
       <InputContainer>
         <label htmlFor="qty">Quantity: </label>
