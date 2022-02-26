@@ -2,15 +2,21 @@ import React from 'react';
 import { Link } from 'gatsby';
 import {  addButton, wrapper, textWrapper, image, title, price } from './ProductCard.module.css';
 import useStore from '../../context/StoreContext';
+import useUI from '../../context/UIContext';
 
 const ProductCard = ({ product }) => {
   const productLink = "/products/" + product.node.handle;
   const { addVariantToCart } = useStore();
+  const { handleToastShow } = useUI();
   return(
     <div className={wrapper}>
         <button 
         className={`${addButton}`}
-        onClick={() => addVariantToCart(product.node, 1)}
+        onClick={() => {
+          addVariantToCart(product.node, 1);
+          handleToastShow();
+          }
+        }
         >
           +
         </button>

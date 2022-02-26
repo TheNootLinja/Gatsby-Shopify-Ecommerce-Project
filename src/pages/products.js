@@ -9,6 +9,7 @@ const products = ({data}) => {
     const shopifyData = data.allShopifyProduct.edges;
   return(
     <Layout>
+      <ToastAlert/>
       <div className={wrapper}>
         {
         shopifyData?.map((product, index) => <ProductCard  product={product} key={index}/>)

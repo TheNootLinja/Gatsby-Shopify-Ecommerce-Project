@@ -6,7 +6,6 @@ import PastasImg from '../images/pastas.jpg'
 const IndexPage = () => {
   return(
     <Layout>
-      <img src={PastasImg} className={homePageBackground} />
       <div className={homePage}>
         <div className={mainContentContainer}>
           <h1 className={sendNoods}>Send Noods?</h1>
