@@ -1,6 +1,6 @@
 import React from 'react';
+import styled from 'styled-components';
 import { Link } from 'gatsby';
-import {  addButton, wrapper, textWrapper, image, title, price } from './ProductCard.module.css';
 import useStore from '../../context/StoreContext';
 import useUI from '../../context/UIContext';
 
@@ -9,9 +9,8 @@ const ProductCard = ({ product }) => {
   const { addVariantToCart } = useStore();
   const { handleToastShow } = useUI();
   return(
-    <div className={wrapper}>
-        <button 
-        className={`${addButton}`}
+    <Wrapper>
+        <AddButton 
         onClick={() => {
           addVariantToCart(product.node, 1);
           handleToastShow();
@@ -19,16 +18,79 @@ const ProductCard = ({ product }) => {
         }
         >
           +
-        </button>
+        </AddButton>
         <Link to={productLink}>
-            <img src={product.node.images[0].src} alt="" className={image} />
-            <div className={textWrapper}>
-              <p className={title}>{product.node.title}</p>
-              <p className={price}>{product.node.priceRangeV2.maxVariantPrice.amount}</p>
-            </div>
+            <Image src={product.node.images[0].src} alt=""/>
+            <TextWrapper>
+              <Title>{product.node.title}</Title>
+              <Price>{product.node.priceRangeV2.maxVariantPrice.amount}</Price>
+            </TextWrapper>
         </Link>
-    </div>
+    </Wrapper>
   )
 }
 
 export default ProductCard;
+
+const Wrapper = styled.div`
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  border-radius: 20px;
+  gap: 10px;
+  cursor: pointer;
+  position: relative;
+  box-shadow: 0px 20px 40px rgba(52, 53, 99, 0.2),
+    0px 1px 3px rgba(0, 0, 0, 0.5);
+`;
+
+const AddButton = styled.button`
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: #014c40;
+  padding: 10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-weight: bold;
+  margin: 0;
+  border: 3px solid white;
+`;
+
+const Image = styled.img`
+  width: 200px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 20px;
+  margin: 0px;
+`;
+
+const TextWrapper = styled.div`
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  border-radius: 0 0 20px 20px;
+  background: rgba(255, 255, 255, 0.2);
+  width: 200px;
+  padding: 10px 0;
+  backdrop-filter: blur(40px);
+`;
+
+const Title = styled.p`
+  font-weight: 600;
+  text-align: center;
+  margin: 0;
+  color: #014c40;
+`;
+
+const Price = styled.p`
+  font-weight: normal;
+  text-align: center;
+  margin: 0;
+`;

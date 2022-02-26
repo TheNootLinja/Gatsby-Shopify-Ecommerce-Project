@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Layout from '../components/Layout/Layout';
+import Layout from '../components/Layout';
 import PastasImg from '../images/pastas.jpg'
 
 const IndexPage = () => {
