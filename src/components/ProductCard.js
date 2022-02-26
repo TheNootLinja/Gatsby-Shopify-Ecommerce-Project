@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
-import useStore from '../../context/StoreContext';
-import useUI from '../../context/UIContext';
+import useStore from '../context/StoreContext';
+import useUI from '../context/UIContext';
 
 const ProductCard = ({ product }) => {
   const productLink = "/products/" + product.node.handle;

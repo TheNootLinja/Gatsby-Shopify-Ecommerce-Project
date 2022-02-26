@@ -1,6 +1,6 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import ProductCard from '../components/ProductCard/ProductCard';
+import ProductCard from '../components/ProductCard';
 import Layout from '../components/Layout';
 import { wrapper } from './products.module.css';
 import ToastAlert from '../components/ToastAlert';
