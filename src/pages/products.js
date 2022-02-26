@@ -1,24 +1,41 @@
 import React from 'react';
+import styled from 'styled-components';
 import { graphql } from 'gatsby';
-import ProductCard from '../components/ProductCard/ProductCard';
-import Layout from '../components/Layout/Layout';
-import { wrapper } from './products.module.css';
+import ProductCard from '../components/ProductCard';
+import Layout from '../components/Layout';
 import ToastAlert from '../components/ToastAlert';
 
 const products = ({data}) => {
     const shopifyData = data.allShopifyProduct.edges;
   return(
     <Layout>
-      <div className={wrapper}>
+      <ToastAlert/>
+      <Wrapper>
         {
         shopifyData?.map((product, index) => <ProductCard  product={product} key={index}/>)
         }
-      </div>
+      </Wrapper>
   </Layout>
   )
 };
 
 export default products;
+
+const Wrapper = styled.div`
+  display: grid;
+  margin: auto;
+  grid-template-columns: repeat(3, auto);
+  justify-content: center;
+  gap: 40px;
+  width: 95%;
+  max-width: 1300px;
+  @media (max-width: 750px) {
+    grid-template-columns: repeat(2, auto);
+  }
+  @media (max-width: 500px) {
+    grid-template-columns: repeat(1, auto);
+  }
+`;
 
 export const query = graphql`
   query {

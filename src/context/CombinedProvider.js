@@ -1,10 +1,15 @@
 import React from 'react'
 
-import { StoreProvider } from './StoreContext'
+import { StoreProvider } from './StoreContext';
+import { UIProvider } from './UIContext';
 
 const CombinedProvider = ({element}) => {
   return (
-    <StoreProvider>{element}</StoreProvider>
+    <UIProvider>
+      <StoreProvider>
+        {element}
+      </StoreProvider>
+    </UIProvider>
   )
 }
 
