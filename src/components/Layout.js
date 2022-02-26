@@ -46,14 +46,27 @@ const Wrapper = styled.div`
 `;
 
 const NavBar = styled.nav`
-  display: none;
-  width: 0;
+  background: red;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 `;
 
 const SiteTitle = styled.header`
   width: fit-content;
   font-size: 35px;
   color: #000;
+`;
+
+const LinkItem = styled.li`
+  margin-right: 20px;
+  > * {
+    text-decoration: none;
+    color: #000;
+    font-size: 1.25rem;
+    margin-right: 20px;
+  }
 `;
 
 const NavLinks = styled.ul`
@@ -63,7 +76,4 @@ const NavLinks = styled.ul`
   align-items: center;
 `;
 
-const LinkItem = styled.li`
-  margin-right: 20px;
-`;
 
