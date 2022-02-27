@@ -30,6 +30,11 @@ const Layout = ({ children }) => {
               </Link>
             </LinkItem>
           </NavLinks>
+          <HamburgerContainer>
+            <HamburgerBar/>
+            <HamburgerBar/>
+            <HamburgerBar/>
+          </HamburgerContainer>
       </NavBar>
       <div>
         {children}
@@ -45,6 +50,24 @@ const Wrapper = styled.div`
   padding: 0;
 `;
 
+const HamburgerContainer = styled.div`
+  height: 40px;
+  width: 40px;
+  position: absolute;
+  right: 5%;
+  padding-top: 8px;
+  @media (min-width: 850px) {
+    display: none;
+  }
+`;
+
+const HamburgerBar = styled.div`
+  height: 5px;
+  width: 100%;
+  background: black;
+  margin-bottom: 7px;
+`;
+
 const NavBar = styled.nav`
   background: red;
   height: 45px;
@@ -56,6 +79,7 @@ const NavBar = styled.nav`
 const SiteTitle = styled.header`
   width: fit-content;
   font-size: 35px;
+  margin-right: 0;
   color: #000;
 `;
 
@@ -74,6 +98,10 @@ const NavLinks = styled.ul`
   display: flex;
   list-style: none;
   align-items: center;
+  width: fit-content;
+  @media (max-width: 850px) {
+    display: none;
+  }
 `;
 
 

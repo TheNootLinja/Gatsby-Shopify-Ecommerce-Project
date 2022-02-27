@@ -86,11 +86,12 @@ const Title = styled.p`
   font-weight: 600;
   text-align: center;
   margin: 0;
-  color: #014c40;
+  color: #fdff7d;
 `;
 
 const Price = styled.p`
   font-weight: normal;
   text-align: center;
   margin: 0;
+  color: white;
 `;
