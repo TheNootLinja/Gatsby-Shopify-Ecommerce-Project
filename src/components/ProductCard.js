@@ -33,6 +33,7 @@ const ProductCard = ({ product }) => {
 export default ProductCard;
 
 const Wrapper = styled.div`
+  margin: auto;
   display: grid;
   justify-content: center;
   align-items: center;

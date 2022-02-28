@@ -1,9 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Button = ({textColor, buttonColor, buttonText}) => {
+const Button = ({textColor='white', buttonColor='#FEDBA1', buttonText='TextHere', linkTo="/"}) => {
   return (
-    <StyledButton textColor={textColor} buttonColor={buttonColor}>{buttonText}</StyledButton>
+    <StyledButton 
+    textColor={textColor} 
+    buttonColor={buttonColor}
+    >
+      {buttonText}
+    </StyledButton>
   )
 }
 
