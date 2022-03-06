@@ -9,7 +9,6 @@ const products = ({data}) => {
     const shopifyData = data.allShopifyProduct.edges;
   return(
     <Layout>
-      <ToastAlert/>
       <Wrapper>
         {
         shopifyData?.map((product, index) => <ProductCard  product={product} key={index}/>)
@@ -23,7 +22,7 @@ export default products;
 
 const Wrapper = styled.div`
   display: grid;
-  margin: auto;
+  margin: 25px auto 0 auto;
   grid-template-columns: repeat(3, auto);
   justify-content: center;
   gap: 40px;

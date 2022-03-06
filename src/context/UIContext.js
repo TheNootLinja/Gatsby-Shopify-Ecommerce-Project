@@ -2,18 +2,24 @@ import React, { useContext, createContext, useState } from 'react';
 
 const defaultValues = {
   toastShow: false,
+  navMenuShow: false,
 }
 
 const UIContext = createContext(defaultValues);
 
 export const UIProvider = ({ children }) => {
   const [ toastShow, setToastShow ] = useState(defaultValues.toastShow);
+  const [ navMenuShow, setNavMenuShow ] = useState(defaultValues.navMenuShow);
 
   const handleToastShow = () => {
     setToastShow(true);
     setTimeout(function () {
       setToastShow(false);
     }, 3000);
+  };
+
+  const handleNavMenuShow = () => {
+    setNavMenuShow(!navMenuShow);
   }
 
   return (
@@ -21,7 +27,9 @@ export const UIProvider = ({ children }) => {
     value={{
       ...defaultValues,
       toastShow,
-      handleToastShow
+      handleToastShow,
+      navMenuShow,
+      handleNavMenuShow,
     }}
     >
       {children}

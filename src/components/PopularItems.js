@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import ProductCard from './ProductCard';
 
 const PopularItems = ({shopifyData}) => {
   shopifyData.map(item => console.log(item.node.priceRangeV2.maxVariantPrice.amount))
@@ -10,10 +11,11 @@ const PopularItems = ({shopifyData}) => {
         {
         shopifyData?.map((product, index) => 
           <PopularItem key={index}>
-            <p>{product.node.title}</p>
+            <ItemTitle><p>{product.node.title}</p></ItemTitle>
             <Image src={product.node.images[0].src} alt=""/>
-            <p>{product.node.priceRangeV2.maxVariantPrice.amount}</p>
+            <ItemPrice>{product.node.priceRangeV2.maxVariantPrice.amount}</ItemPrice>
           </PopularItem>
+          // <ProductCard  addPosition='5px' itemWidth = '100px' itemHeight = '150px' product={product} key={index}/>
         )
         }
       </PopularItemsGrid>
@@ -24,11 +26,16 @@ const PopularItems = ({shopifyData}) => {
 export default PopularItems
 
 const PopularItemsContainer = styled.div`
-  background: #fff280;
-  width: 95%;
+  width: 100%;
   max-width: 900px;
   height: 350px;
   margin: auto;
+  padding-bottom: 43px;
+  display: block;
+  overflow: scroll;
+  @media (max-width: 1190px) {
+    height: fit-content;
+  }
 `;
 
 const PopularItemsGrid = styled.div`
@@ -36,15 +43,33 @@ const PopularItemsGrid = styled.div`
   gap: 15px;
   grid-template-columns: repeat(3, 1fr);
   margin: auto;
-  width: 95%;
+  width: 100%;
 `;
 
 const PopularItem = styled.div`
+  border-radius: 10px;
   height: 280px;
   width: 100%;
   background: #b1873a;
   margin: auto;
   text-align: center;
+  @media (max-width: 1190px) {
+    height: 250px;
+  }
+  @media (max-width: 600px) {
+    height: 190px;
+  }
+  @media (max-width: 450px) {
+    font-size: 13px;
+  }
+`;
+
+const ItemTitle = styled.p`
+  height: 15%;
+`;
+
+const ItemPrice = styled.p`
+  margin-top: 3px;
 `;
 
 const Image = styled.img`
@@ -53,6 +78,14 @@ const Image = styled.img`
   object-fit: cover;
   border-radius: 20px;
   margin: 0px;
+  @media (max-width: 1190px) {
+    width: 100px;
+    height: 125px;
+  }
+  @media (max-width: 600px) {
+    width: 75px;
+    height: 100px;
+  }
 `;
 
 const SectionLabel = styled.h3`
