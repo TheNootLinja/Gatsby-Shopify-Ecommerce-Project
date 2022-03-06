@@ -29,6 +29,9 @@ const HeroSectionContainer = styled.div`
   margin: auto;
   background-image: url(${props => props.image});
   background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-shadow: inset 0px 0px 50vw 10px rgba(0,0,0,1);
 `;
 
 const PageHeader = styled.h1`
