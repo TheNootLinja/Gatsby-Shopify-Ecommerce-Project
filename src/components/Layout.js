@@ -2,14 +2,17 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link, navigate } from 'gatsby';
 import '../global.css';
+import useUI from '../context/UIContext';
 
 import PopOpenMenu from './PopOpenMenu';
 import ToastAlert from '../components/ToastAlert';
 
 const Layout = ({ children, backgroundColor='##FEDBA1' }) => {
+  const { handleNavMenuShow } = useUI();
   return (
   <Wrapper>
       <ToastAlert />
+      <PopOpenMenu/>
       <NavBar>
       <SiteTitle role='link' onClick={() => navigate('/')}>Send Noods</SiteTitle>
           <NavLinks>
@@ -34,13 +37,12 @@ const Layout = ({ children, backgroundColor='##FEDBA1' }) => {
               </Link>
             </LinkItem>
           </NavLinks>
-          <HamburgerContainer>
+          <HamburgerContainer onClick={handleNavMenuShow}>
             <HamburgerBar/>
             <HamburgerBar/>
             <HamburgerBar/>
           </HamburgerContainer>
       </NavBar>
-      <PopOpenMenu/>
       <ContentContainer>
         {children}
       </ContentContainer>
@@ -62,6 +64,7 @@ const HamburgerContainer = styled.div`
   position: absolute;
   right: 5%;
   padding-top: 8px;
+  background: red;
   @media (min-width: 850px) {
     display: none;
   }
@@ -77,9 +80,11 @@ const HamburgerBar = styled.div`
 const NavBar = styled.nav`
   background: #B3694A;
   height: 45px;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-around;
+  z-index: 2;
 `;
 
 const SiteTitle = styled.header`
