@@ -21,10 +21,9 @@ const ToastAlertContainer = styled.div`
   width: 300px;
   background: #f4f5ab;
   position: fixed;
-  top: 20vh;
+  transform: translate(${(props) => props.show ? 'calc(100vw - 300px)' : '100vw'}, 10vh);
   z-index: 1;
-  right: ${(props) => props.show ? '0px' : '-300px'};
-  transition: all 1s;
+  transition: all .5s;
   border-radius: 10px 0 0 10px;
   box-shadow: -10px 5px 10px #ccc, -3px 3px 3px #ccc;
   opacity: ${(props) => props.show ? '100%' : '0'};

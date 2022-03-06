@@ -1,13 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'gatsby';
-import '../global.css'
+import { Link, navigate } from 'gatsby';
+import '../global.css';
 
-const Layout = ({ children }) => {
+import PopOpenMenu from './PopOpenMenu';
+import ToastAlert from '../components/ToastAlert';
+
+const Layout = ({ children, backgroundColor='##FEDBA1' }) => {
   return (
   <Wrapper>
+      <ToastAlert />
       <NavBar>
-      <SiteTitle>Send Noods</SiteTitle>
+      <SiteTitle role='link' onClick={() => navigate('/')}>Send Noods</SiteTitle>
           <NavLinks>
             <LinkItem>
               <Link to="/">
@@ -36,9 +40,10 @@ const Layout = ({ children }) => {
             <HamburgerBar/>
           </HamburgerContainer>
       </NavBar>
-      <div>
+      <PopOpenMenu/>
+      <ContentContainer>
         {children}
-      </div>
+      </ContentContainer>
   </Wrapper>
   )
 };
@@ -48,6 +53,7 @@ export default Layout;
 const Wrapper = styled.div`
   margin: 0;
   padding: 0;
+  position: relative;
 `;
 
 const HamburgerContainer = styled.div`
@@ -64,12 +70,12 @@ const HamburgerContainer = styled.div`
 const HamburgerBar = styled.div`
   height: 5px;
   width: 100%;
-  background: black;
+  background: #fff;
   margin-bottom: 7px;
 `;
 
 const NavBar = styled.nav`
-  background: red;
+  background: #B3694A;
   height: 45px;
   display: flex;
   align-items: center;
@@ -80,14 +86,15 @@ const SiteTitle = styled.header`
   width: fit-content;
   font-size: 35px;
   margin-right: 0;
-  color: #000;
+  color: #fff;
+  cursor: pointer;
 `;
 
 const LinkItem = styled.li`
   margin-right: 20px;
   > * {
     text-decoration: none;
-    color: #000;
+    color: #fff;
     font-size: 1.25rem;
     margin-right: 20px;
   }
@@ -102,6 +109,10 @@ const NavLinks = styled.ul`
   @media (max-width: 850px) {
     display: none;
   }
+`;
+
+const ContentContainer = styled.div`
+  /* margin-top: 45px; */
 `;
 
 
