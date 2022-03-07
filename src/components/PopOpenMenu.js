@@ -22,14 +22,17 @@ export default PopOpenMenu
 const PopOpenMenuContainer = styled.div`
   height: 400px;
   width: 300px;
-  background: ${(props) => props.navMenuShow ? 'blue' : 'red'};
+  background: #B3694A;
   border-radius: 0 0 20px 20px;
   position: absolute;
-  transform: translate(calc(100vw - 300px), 0);
+  /* transform: translate(calc(100vw - 300px), 0); */
+  transition: all 1s;
+  transform: ${(props) => `translate(calc(100vw - 300px), ${props.navMenuShow ? '45px' : '-400px'})`};
   display: flex;
   align-items: center;
   flex-direction: column;
-  z-index: 2;
+  z-index: 1;
+  opacity: ${(props) => props.navMenuShow ? '100%' : '0'};
   @media (min-width: 850px) {
     display: none;
   }

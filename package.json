@@ -15,9 +15,11 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
+    "babel-plugin-styled-components": "^2.0.6",
     "gatsby": "^4.6.0",
     "gatsby-plugin-image": "^2.6.0",
     "gatsby-plugin-sharp": "^4.9.0",
+    "gatsby-plugin-styled-components": "^5.9.0",
     "gatsby-source-shopify": "^6.6.0",
     "gatsby-transformer-sharp": "^4.9.0",
     "isomorphic-fetch": "^3.0.0",

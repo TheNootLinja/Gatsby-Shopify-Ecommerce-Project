@@ -20,6 +20,7 @@ export default HeroSection
 
 const HeroSectionContainer = styled.div`
   display:flex;
+  z-index: -5;
   flex-direction: column;
   align-items: center;
   justify-content: center;
