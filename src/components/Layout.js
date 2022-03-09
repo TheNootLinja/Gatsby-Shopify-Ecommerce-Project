@@ -64,7 +64,6 @@ const HamburgerContainer = styled.div`
   position: absolute;
   right: 5%;
   padding-top: 8px;
-  background: red;
   @media (min-width: 850px) {
     display: none;
   }
@@ -85,6 +84,7 @@ const NavBar = styled.nav`
   align-items: center;
   justify-content: space-around;
   z-index: 2;
+  box-shadow: 0px 2px 10px rgba(0,0,0,0.25);
 `;
 
 const SiteTitle = styled.header`
