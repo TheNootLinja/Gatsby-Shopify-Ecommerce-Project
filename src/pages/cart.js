@@ -12,11 +12,12 @@ const Cart = () => {
   return (
     <Layout>
       <Wrapper>
-        <HeaderWrapper>
+        {/* <HeaderWrapper>
           <Text>Product</Text>
+          <Text>Product Name</Text>
           <Text>Quanity</Text>
           <Text>Remove Item</Text>
-        </HeaderWrapper>
+        </HeaderWrapper> */}
         {
           checkout.lineItems.length > 0 ? checkout.lineItems.map((item, index) => <ProductRow key={index} item={item} />) : <Text>No Noods!</Text>
         }
@@ -31,18 +32,19 @@ const Cart = () => {
 export default Cart;
 
 const Wrapper = styled.div`
-  margin: 40px;
+  margin: 10px;
 `;
 
 const HeaderWrapper = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 330px);
-  gap: 40px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
 `;
 
 const Text = styled.p`
   font-weight: 600;
   font-size: 14px;
+  text-align: center;
 `;
 
 const ButtonWrapper = styled.div`
