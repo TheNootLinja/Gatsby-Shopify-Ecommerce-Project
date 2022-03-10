@@ -20,7 +20,7 @@ const ProductTemplate = ({ pageContext }) => {
       <div>{product.description}</div>
       <InputContainer>
         <label htmlFor="qty">Quantity: </label>
-        <input placeholder="1" id="qty" type="number" {...bind} />
+        <Input placeholder="1" id="qty" type="number" {...bind} />
         <Button textColor='#fff' buttonColor='#00aeff' buttonText='Add to Cart' onClick={() => addVariantToCart(product, bind.value)}>Add to Cart</Button>
       </InputContainer>
     </ProductContainer>
@@ -36,10 +36,16 @@ const ProductContainer = styled.div`
 `;
 
 const InputContainer = styled.div`
-  background: red;
   width: fit-content;
   margin: 30px auto 0 auto;
   display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const Input = styled.input`
+  height: 30px;
+  margin-left: 10px;
 `;
 
 const Image = styled.img`
