@@ -30,7 +30,9 @@ const Wrapper = styled.div`
   grid-template-columns: repeat(4, 1fr);
   gap: 10px;
   align-items: center;
+  margin: auto;
   margin-top: 5px;
+  max-width: 600px;
 `;
 
 const ProductWrapper = styled.div`
@@ -47,6 +49,7 @@ const Image = styled.img`
   object-fit: cover;
   border-radius: 20px;
   margin: auto;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
 `;
 
 const Subtitle = styled.p`
@@ -55,16 +58,23 @@ const Subtitle = styled.p`
   width: 70px;
 `;
 
-const DeleteButton = styled.p`
-  color: #a61b2b;
+const DeleteButton = styled.button`
+  border: none;
+  background: #c41f32;
+  color: white;
   font-size: 14px;
   cursor: pointer;
   text-align: center;
+  height: 30px;
+  width: 120px;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
 `;
 
 const Divider = styled.div`
   height: 1px;
   width: 100%;
+  max-width: 600px;
+  margin: auto;
   margin-top: 5px;
   background: rgba(0,0,0,.06);
 `;
