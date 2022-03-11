@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Layout from '../components/Layout';
 import Button from '../components/Button';
+import useUI from '../context/UIContext';
 
 import useStore from '../context/StoreContext';
 
@@ -11,6 +12,7 @@ import useInput from '../utils/useInput';
 const ProductTemplate = ({ pageContext }) => {
   const { product } = pageContext;
   const { addVariantToCart } = useStore();
+  const { handleToastShow } = useUI();
   const bind = useInput(1);
   return (
   <Layout>
@@ -18,7 +20,7 @@ const ProductTemplate = ({ pageContext }) => {
         <Image src={product.images[0]?.src} alt="" />
         <ProductInfoContainer>
           <h1>{product.title}</h1>
-          <p>{product.priceRangeV2.maxVariantPrice.amount}</p>
+          <p>${product.priceRangeV2.maxVariantPrice.amount}</p>
           <p>{product.description}</p>
         </ProductInfoContainer>
         <InputContainer>
@@ -26,7 +28,11 @@ const ProductTemplate = ({ pageContext }) => {
             <label htmlFor="qty">Quantity: </label>
             <Input placeholder="1" id="qty" type="number" {...bind} />
           </InputQuantityContainer>
-            <Button textColor='#fff' buttonColor='#00aeff' buttonText='Add to Cart' onClick={() => addVariantToCart(product, bind.value)}>Add to Cart</Button>
+            <Button
+            textColor='#fff' 
+            buttonColor='#00aeff' 
+            buttonText='Add to Cart' 
+            onClick={() => {alert('Added');addVariantToCart(product, bind.value);handleToastShow()}}>Add to Cart</Button>
         </InputContainer>
     </ProductContainer>
   </Layout>

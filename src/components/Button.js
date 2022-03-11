@@ -23,7 +23,7 @@ const StyledButton = styled.button`
   font-weight: 600;
   border: none;
   border-radius: 8px;
-  box-shadow: 3px 2px 5px rgba(125, 125, 125, .125), inset 0px 0px 10px rgba(0,0,0,.3);
+  box-shadow: 3px 2px 5px rgba(125, 125, 125, .125), inset 0px 2px 4px rgba(0,0,0,.11);
   @media (max-width: 768px) {
     width: 100px;
   }
