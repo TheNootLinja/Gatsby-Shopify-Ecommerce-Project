@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Button = ({textColor='white', buttonColor='#FEDBA1', buttonText='TextHere', linkTo="/"}) => {
+const Button = ({textColor='white', buttonColor='#FEDBA1', buttonText='TextHere', linkTo="/", marginAuto=true}) => {
   return (
     <StyledButton 
     textColor={textColor} 
@@ -19,7 +19,6 @@ const StyledButton = styled.button`
   color: ${(props) => props.textColor};
   width: 200px;
   height: 40px;
-  margin-left: 20px;
   font-size: 1.10rem;
   font-weight: 600;
   border: none;
