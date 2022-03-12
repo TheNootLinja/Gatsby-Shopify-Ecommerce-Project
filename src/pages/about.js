@@ -69,4 +69,7 @@ const AboutContainer = styled.div`
     margin-bottom: 0;
     padding-left: 10px;
   }
+  @media (max-width: 950px) {
+    margin-top: 20px;
+  }
 `;
