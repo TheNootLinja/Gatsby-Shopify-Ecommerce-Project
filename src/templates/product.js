@@ -14,6 +14,10 @@ const ProductTemplate = ({ pageContext }) => {
   const { addVariantToCart } = useStore();
   const { handleToastShow } = useUI();
   const bind = useInput(1);
+  const clickFunc = () => {
+    addVariantToCart(product, bind.value);
+    handleToastShow();
+  }
   return (
   <Layout>
     <ProductContainer>
@@ -32,7 +36,7 @@ const ProductTemplate = ({ pageContext }) => {
             textColor='#fff' 
             buttonColor='#00aeff' 
             buttonText='Add to Cart' 
-            onClick={() => {alert('Added');addVariantToCart(product, bind.value);handleToastShow()}}>Add to Cart</Button>
+            clickFunc={clickFunc}>Add to Cart</Button>
         </InputContainer>
     </ProductContainer>
   </Layout>
