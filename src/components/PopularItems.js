@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'gatsby';
 import styled from 'styled-components';
 import ProductCard from './ProductCard';
 
@@ -9,12 +10,14 @@ const PopularItems = ({shopifyData}) => {
       <SectionLabel>What's Popular</SectionLabel>
       <PopularItemsGrid>
         {
-        shopifyData?.map((product, index) => 
-          <PopularItem key={index}>
-            <ItemTitle><p>{product.node.title}</p></ItemTitle>
-            <Image src={product.node.images[0].src} alt=""/>
-            <ItemPrice>{product.node.priceRangeV2.maxVariantPrice.amount}</ItemPrice>
-          </PopularItem>
+        shopifyData?.map((product, index) =>
+          <Link to={`/products/${product.node.handle}`}>
+            <PopularItem key={index}>
+              <ItemTitle><p>{product.node.title}</p></ItemTitle>
+              <Image src={product.node.images[0].src} alt=""/>
+              <ItemPrice>{product.node.priceRangeV2.maxVariantPrice.amount}</ItemPrice>
+            </PopularItem>
+          </Link>
           // <ProductCard  addPosition='5px' itemWidth = '100px' itemHeight = '150px' product={product} key={index}/>
         )
         }
