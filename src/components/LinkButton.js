@@ -26,5 +26,6 @@ const StyledButton = styled.button`
   font-size: 1.10rem;
   font-weight: 600;
   border: none;
-  box-shadow: 3px 2px 5px rgba(125, 125, 125, .125), inset 0px 0px 5px rgba(0,0,0,.3);
+  border-radius: 2px;
+  /* box-shadow: 3px 2px 5px rgba(125, 125, 125, .125), inset 0px 0px 5px rgba(0,0,0,.3); */
 `;
