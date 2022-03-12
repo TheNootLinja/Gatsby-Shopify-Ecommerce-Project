@@ -46,13 +46,17 @@ const ProductTemplate = ({ pageContext }) => {
 export default ProductTemplate;
 
 const ProductContainer = styled.div`
+  height: fit-content;
   max-width: 1000px;
   margin: 45px auto 0 auto;
   display: flex;
   flex-direction: row;
   width: fit-content;
   align-items: center;
-
+  @media (max-width: 950px) {
+    flex-direction: column;
+    margin-top: 20px;
+  }
 `;
 
 const ProductInfoContainer = styled.div`
@@ -68,6 +72,9 @@ const InputContainer = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  @media (max-width: 950px) {
+    margin: auto;
+  }
 `;
 
 const InputQuantityContainer = styled.div`

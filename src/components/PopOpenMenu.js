@@ -19,6 +19,9 @@ const PopOpenMenu = () => {
       <NavItem onClick={handleNavMenuShow}>
         <Link to='/cart'>Cart of Noods</Link>
       </NavItem>
+      <NavItem onClick={handleNavMenuShow}>
+        <Link to='/about'>About the Noods</Link>
+      </NavItem>
     </PopOpenMenuContainer>
   )
 }
@@ -26,7 +29,7 @@ const PopOpenMenu = () => {
 export default PopOpenMenu
 
 const PopOpenMenuContainer = styled.div`
-  height: 225px;
+  height: 275px;
   width: 100%;
   background: #e7a75d;
   border-radius: 0 0 20px 20px;
