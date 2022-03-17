@@ -67,6 +67,7 @@ const DeleteButton = styled.button`
   text-align: center;
   height: 30px;
   width: 120px;
+  border-radius: 2px;
   box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
 `;
 

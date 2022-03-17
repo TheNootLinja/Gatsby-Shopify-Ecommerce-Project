@@ -26,7 +26,4 @@ const StyledButton = styled.button`
   border: none;
   border-radius: 2px;
   box-shadow: 3px 2px 5px rgba(125, 125, 125, .125), inset 0px 2px 4px rgba(0,0,0,.11);
-  @media (max-width: 768px) {
-    width: 100px;
-  }
 `;
