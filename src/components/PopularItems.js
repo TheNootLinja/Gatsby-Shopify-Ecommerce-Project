@@ -88,10 +88,12 @@ const ItemTitle = styled.p`
   white-space: nowrap;
   overflow: hidden;
   color: #fdff7d;
+  margin: 10px auto 0 auto;
 `;
 
 const ItemPrice = styled.p`
-  margin-top: 10px;
+  /* margin-top: 10px; */
+  margin: 0 auto 10px auto;
   color: #fdff7d;
 `;
 
