@@ -13,9 +13,11 @@ const PopularItems = ({shopifyData}) => {
         shopifyData?.map((product, index) =>
           <Link to={`/products/${product.node.handle}`}>
             <PopularItem key={index}>
-              <ItemTitle>{product.node.title}</ItemTitle>
               <Image src={product.node.images[0].src} alt=""/>
-              <ItemPrice>${product.node.priceRangeV2.maxVariantPrice.amount}</ItemPrice>
+              <ItemInfoContainer>
+                <ItemTitle>{product.node.title}</ItemTitle>
+                <ItemPrice>${product.node.priceRangeV2.maxVariantPrice.amount}</ItemPrice>
+              </ItemInfoContainer>
             </PopularItem>
           </Link>
           // <ProductCard  addPosition='5px' itemWidth = '100px' itemHeight = '150px' product={product} key={index}/>
@@ -31,7 +33,7 @@ export default PopularItems
 const PopularItemsContainer = styled.div`
   width: 100%;
   max-width: 900px;
-  height: 350px;
+  height: fit-content;
   margin: auto;
   padding-bottom: 43px;
   display: block;
@@ -51,40 +53,46 @@ const PopularItemsGrid = styled.div`
   & > * {
     text-decoration: none;
   }
+  @media (max-width: 530px) {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 const PopularItem = styled.div`
   border-radius: 10px;
   height: fit-content;
   width: 100%;
-  background: #b1873a;
+  /* background: #b1873a; */
   margin: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   box-sizing: border-box;
-  /* @media (max-width: 1190px) {
-    height: 250px;
-  }
-  @media (max-width: 600px) {
-    height: 190px;
-  }
-  @media (max-width: 450px) {
-    font-size: 13px;
-  } */
+  position: relative;
+`;
+
+const ItemInfoContainer = styled.div`
+  /* background: rgba(0,0,0,0.5); */
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(40px);
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  border-radius: 0 0 20px 20px;
 `;
 
 
 const ItemTitle = styled.p`
-  color: white;
   white-space: nowrap;
   overflow: hidden;
+  color: #fdff7d;
 `;
 
 const ItemPrice = styled.p`
   margin-top: 10px;
-  color: white;
+  color: #fdff7d;
 `;
 
 const Image = styled.img`
@@ -93,7 +101,8 @@ const Image = styled.img`
   object-fit: cover;
   border-radius: 20px;
   margin: 0px;
-  width: 75%;
+  width: 100%;
+  height: 100%;
   /* @media (max-width: 1190px) {
     width: 100px;
     height: 125px;
