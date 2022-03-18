@@ -12,12 +12,6 @@ const Cart = () => {
   return (
     <Layout>
       <Wrapper>
-        {/* <HeaderWrapper>
-          <Text>Product</Text>
-          <Text>Product Name</Text>
-          <Text>Quanity</Text>
-          <Text>Remove Item</Text>
-        </HeaderWrapper> */}
         {
           checkout.lineItems.length > 0 ? checkout.lineItems.map((item, index) => <ProductRow key={index} item={item} />) : <Text>No Noods!</Text>
         }
@@ -32,7 +26,10 @@ const Cart = () => {
 export default Cart;
 
 const Wrapper = styled.div`
-  margin: 10px;
+  margin: 30px auto 0 auto;
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
 `;
 
 const HeaderWrapper = styled.div`
@@ -50,4 +47,5 @@ const Text = styled.p`
 const ButtonWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
+  margin-top: 20px;
 `;
