@@ -33,6 +33,9 @@ const IndexPage = ({data}) => {
               </div>
             </PastaInfoItem>
             <PastaInfoItem>
+              <ImageContainer>
+                <StaticImage alt="" src="../images/WholeWheatNoodles.jpeg" height={200} width={200}/>
+              </ImageContainer>
               <div>
                 <h3>Whole Wheat</h3>
                 <PastaInfoText>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
@@ -43,9 +46,6 @@ const IndexPage = ({data}) => {
                   posuere nulla id maximus.</PastaInfoText>
                 <ShopNow><Link to='/products'>SHOP NOW</Link></ShopNow>
               </div>
-              <ImageContainer>
-                <StaticImage alt="" src="../images/WholeWheatNoodles.jpeg" height={200} width={200}/>
-              </ImageContainer>
             </PastaInfoItem>
             <PastaInfoItem>
               <ImageContainer>
@@ -63,6 +63,9 @@ const IndexPage = ({data}) => {
               </div>
             </PastaInfoItem>
             <PastaInfoItem>
+              <ImageContainer>
+                <StaticImage alt="" src="../images/RamenNoodles.jpeg" height={200} width={200}/>
+              </ImageContainer>
               <div>
                 <h3>Ramen</h3>
                 <PastaInfoText>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
@@ -73,14 +76,11 @@ const IndexPage = ({data}) => {
                   posuere nulla id maximus.</PastaInfoText>
                 <ShopNow><Link to='/products'>SHOP NOW</Link></ShopNow>
               </div>
-              <ImageContainer>
-                <StaticImage alt="" src="../images/RamenNoodles.jpeg" height={200} width={200}/>
-              </ImageContainer>
             </PastaInfoItem>
             <PastaInfoItem>
-            <ImageContainer>
-              <StaticImage alt="" src="../images/WholeGrainNoodles.jpeg" height={200} width={200}/>
-            </ImageContainer>
+              <ImageContainer>
+                <StaticImage alt="" src="../images/WholeGrainNoodles.jpeg" height={200} width={200}/>
+              </ImageContainer>
               <div>
                 <h3>Whole Grain</h3>
                 <PastaInfoText>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
@@ -145,12 +145,13 @@ const PastaInfo = styled.div`
 const ImageContainer = styled.div`
   border-radius: 10px;
   width: 20%;
-  height: fit-content;
+  height: 100%;
   overflow: hidden;
   min-width: 150px;
-  /* @media (max-width: 730px) {
-    height: 150px;
-    width: 150px;
+  margin-right: 20px;
+  /* @media (max-width: 720px) {
+    height: 400px;
+    width: 400px;
   } */
 `;
 
@@ -165,6 +166,10 @@ const PastaInfoItem = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  @media (max-width: 720px) {
+    flex-direction: column;
+    margin-bottom: 30px;
+  }
   `;
 
 const PastaInfoText = styled.p`
@@ -174,6 +179,7 @@ const PastaInfoText = styled.p`
 const ShopNow = styled.p`
   border-bottom: 2px solid black;
   width: fit-content;
+  margin: auto;
   & > * {
     text-decoration: none;
     color: black;
