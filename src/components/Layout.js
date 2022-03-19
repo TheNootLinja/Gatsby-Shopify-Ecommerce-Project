@@ -46,6 +46,7 @@ const Layout = ({ children, backgroundColor='##FEDBA1' }) => {
       <ContentContainer>
         {children}
       </ContentContainer>
+      {/* <Footer></Footer> */}
   </Wrapper>
   )
 };
@@ -120,4 +121,8 @@ const ContentContainer = styled.div`
   /* margin-top: 45px; */
 `;
 
+// const Footer = styled.div`
+//   background: red;
+//   height: 45px;
+// `;
 
