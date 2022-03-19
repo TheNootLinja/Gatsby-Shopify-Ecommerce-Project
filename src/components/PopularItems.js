@@ -20,7 +20,6 @@ const PopularItems = ({shopifyData}) => {
               </ItemInfoContainer>
             </PopularItem>
           </Link>
-          // <ProductCard  addPosition='5px' itemWidth = '100px' itemHeight = '150px' product={product} key={index}/>
         )
         }
       </PopularItemsGrid>
@@ -32,7 +31,7 @@ export default PopularItems
 
 const PopularItemsContainer = styled.div`
   width: 100%;
-  max-width: 900px;
+  /* max-width: 900px; */
   height: fit-content;
   margin: auto;
   padding-bottom: 43px;
@@ -50,6 +49,8 @@ const PopularItemsGrid = styled.div`
   grid-template-columns: repeat(3, 1fr);
   margin: auto;
   width: 100%;
+  max-width: 900px;
+
   & > * {
     text-decoration: none;
   }
@@ -60,10 +61,9 @@ const PopularItemsGrid = styled.div`
 `;
 
 const PopularItem = styled.div`
-  border-radius: 10px;
+  border-radius: 20px;
   height: fit-content;
   width: 100%;
-  /* background: #b1873a; */
   margin: auto;
   display: flex;
   flex-direction: column;
@@ -71,10 +71,10 @@ const PopularItem = styled.div`
   text-align: center;
   box-sizing: border-box;
   position: relative;
+  /* box-shadow: 0 0 25px 10px rgba(0,0,0,.15); */
 `;
 
 const ItemInfoContainer = styled.div`
-  /* background: rgba(0,0,0,0.5); */
   background: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(40px);
   position: absolute;
@@ -92,7 +92,6 @@ const ItemTitle = styled.p`
 `;
 
 const ItemPrice = styled.p`
-  /* margin-top: 10px; */
   margin: 0 auto 10px auto;
   color: #fdff7d;
 `;
@@ -105,17 +104,6 @@ const Image = styled.img`
   margin: 0px;
   width: 100%;
   height: 100%;
-  /* @media (max-width: 1190px) {
-    width: 100px;
-    height: 125px;
-  }
-  @media (max-width: 750px) {
-    width: 75%;
-  }
-  @media (max-width: 600px) {
-    width: 75px;
-    height: 100px;
-  } */
 `;
 
 const SectionLabel = styled.h3`
