@@ -25,7 +25,7 @@ const HeroSectionContainer = styled.div`
   align-items: center;
   justify-content: center;
   width: 92%;
-  height: 90vh;
+  height: 92vh;
   width: 100vw;
   margin: auto;
   background-image: url(${props => props.image});
@@ -33,6 +33,9 @@ const HeroSectionContainer = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   box-shadow: inset 0px 0px 50vw 10px rgba(0,0,0,1);
+  @media (max-width: 720px) {
+    height: 600px;
+  }
 `;
 
 const PageHeader = styled.h1`
