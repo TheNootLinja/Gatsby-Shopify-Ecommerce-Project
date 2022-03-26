@@ -27,15 +27,10 @@ export default Cart;
 
 const Wrapper = styled.div`
   margin: 30px auto 0 auto;
-  width: fit-content;
+  width: 95%;
+  max-width: 900px;
   display: flex;
   flex-direction: column;
-`;
-
-const HeaderWrapper = styled.div`
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
 `;
 
 const Text = styled.p`
