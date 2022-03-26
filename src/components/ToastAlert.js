@@ -25,6 +25,6 @@ const ToastAlertContainer = styled.div`
   z-index: 1;
   transition: all .5s;
   border-radius: 10px 0 0 10px;
-  box-shadow: -10px 5px 10px #ccc, -3px 3px 3px #ccc;
+  box-shadow: -10px 5px 10px rgba(0,0,0,0.1), -3px 3px 3px rgba(0,0,0,0.15);
   opacity: ${(props) => props.show ? '100%' : '0'};
 `;
