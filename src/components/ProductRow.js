@@ -15,6 +15,11 @@ const ProductRow = ({ item }) => {
         <Subtitle>{item.title}</Subtitle>
       <Subtitle>{item.quantity} in cart</Subtitle>
       <DeleteButton onClick={() => removeLineItem(checkout.id, item.id)}>Remove</DeleteButton>
+      <DeleteIcon onClick={() => removeLineItem(checkout.id, item.id)} >
+      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="red" strokeWidth={2}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+      </DeleteIcon>
     </Wrapper>
     <Divider />
     </ProductRowWrapper>
@@ -23,7 +28,9 @@ const ProductRow = ({ item }) => {
 
 export default ProductRow
 
-const ProductRowWrapper = styled.div``;
+const ProductRowWrapper = styled.div`
+  padding: 0 10px 0 10px;
+`;
 
 const Wrapper = styled.div`
   display: grid;
@@ -32,15 +39,13 @@ const Wrapper = styled.div`
   align-items: center;
   margin: auto;
   margin-top: 5px;
-  max-width: 600px;
 `;
 
 const ProductWrapper = styled.div`
   display: grid;
-  /* grid-template-columns: 80px auto; */
   align-items: center;
   width: 95%;
-  max-width: 395px;
+  max-width: 600px;
 `;
 
 const Image = styled.img`
@@ -50,12 +55,18 @@ const Image = styled.img`
   border-radius: 20px;
   margin: auto;
   box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+  @media (min-width: 800px) {
+    width: 150px;
+    height: 150px;
+  }
 `;
 
 const Subtitle = styled.p`
   font-weight: bold;
   font-size: 14px;
   width: 70px;
+  margin: auto;
+  text-align: center;
 `;
 
 const DeleteButton = styled.button`
@@ -69,6 +80,21 @@ const DeleteButton = styled.button`
   width: 120px;
   border-radius: 2px;
   box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+  display: none;
+  @media (min-width: 550px) {
+    display: inline;
+  }
+`;
+
+const DeleteIcon = styled.button`
+  border: none;
+  background: none;
+  width: 50px;
+  height: 50px;
+  margin: auto;
+  @media (min-width: 550px) {
+    display: none;
+  }
 `;
 
 const Divider = styled.div`
