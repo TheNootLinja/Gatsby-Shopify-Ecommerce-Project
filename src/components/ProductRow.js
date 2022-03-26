@@ -29,7 +29,7 @@ const ProductRow = ({ item }) => {
 export default ProductRow
 
 const ProductRowWrapper = styled.div`
-  padding: 0 10px 0 10px;
+  padding: 10px;
 `;
 
 const Wrapper = styled.div`
@@ -100,8 +100,7 @@ const DeleteIcon = styled.button`
 const Divider = styled.div`
   height: 1px;
   width: 100%;
-  max-width: 600px;
-  margin: auto;
-  margin-top: 5px;
+  margin: 20px auto 0 auto;
   background: rgba(0,0,0,.06);
+
 `;
