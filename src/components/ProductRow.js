@@ -102,5 +102,4 @@ const Divider = styled.div`
   width: 100%;
   margin: 20px auto 0 auto;
   background: rgba(0,0,0,.06);
-
 `;
