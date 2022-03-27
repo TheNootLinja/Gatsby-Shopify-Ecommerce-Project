@@ -63,7 +63,8 @@ const PopularItemsGrid = styled.div`
 const PopularItem = styled.div`
   border-radius: 20px;
   height: fit-content;
-  width: 100%;
+  width: 90%;
+  max-width: 300px;
   margin: auto;
   display: flex;
   flex-direction: column;
@@ -71,7 +72,7 @@ const PopularItem = styled.div`
   text-align: center;
   box-sizing: border-box;
   position: relative;
-  /* box-shadow: 0 0 25px 10px rgba(0,0,0,.15); */
+  box-shadow: 0 0 25px 10px rgba(0,0,0,.15);
 `;
 
 const ItemInfoContainer = styled.div`
